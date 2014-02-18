@@ -16,7 +16,7 @@ const char* _doc_root_path = NULL;
 
 static void tinyweb_on_connection(uv_stream_t* server, int status);
 
-//start web serer, linstening ip:port
+//start web server, linstening ip:port
 //ip can be NULL or "", which means "0.0.0.0"
 //doc_root_path can be NULL, or requires not end with /
 void tinyweb_start(uv_loop_t* loop, const char* ip, int port, const char* doc_root_path) {

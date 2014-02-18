@@ -14,7 +14,7 @@ uv_loop_t* _loop;
 
 static void tinyweb_on_connection(uv_stream_t* server, int status);
 
-//start web serer, linstening ip:port
+//start web server, linstening ip:port
 //ip can be NULL or "", which means "0.0.0.0"
 void tinyweb_start(uv_loop_t* loop, const char* ip, int port) {
 	struct sockaddr_in addr;
