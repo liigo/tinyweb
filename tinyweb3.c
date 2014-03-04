@@ -28,7 +28,7 @@ void tinyweb_start(uv_loop_t* loop, const char* ip, int port, const char* doc_ro
 		_doc_root_path = doc_root_path;
 
 	uv_tcp_init(_loop, &_server);
-	uv_tcp_bind(&_server, (const struct sockaddr*) &addr);
+	uv_tcp_bind(&_server, (const struct sockaddr*) &addr, 0);
 	uv_listen((uv_stream_t*)&_server, 8, tinyweb_on_connection);
 }
 
@@ -137,7 +137,7 @@ static void _on_send_file(uv_stream_t* client, const char* content_type, const c
 	}
 }
 
-//only identify familar postfix currently
+//only identify familiar postfix currently
 static const char* _get_content_type(const char* postfix) {
 	if(strcmp(postfix, "html") == 0 || strcmp(postfix, "htm") == 0)
 		return "text/html";

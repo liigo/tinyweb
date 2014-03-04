@@ -22,7 +22,7 @@ void tinyweb_start(uv_loop_t* loop, const char* ip, int port) {
 	uv_ip4_addr((ip && ip[0]) ? ip : "0.0.0.0", port, &addr);
 	_loop = loop;
 	uv_tcp_init(_loop, &_server);
-	uv_tcp_bind(&_server, (const struct sockaddr*) &addr);
+	uv_tcp_bind(&_server, (const struct sockaddr*) &addr, 0);
 	uv_listen((uv_stream_t*)&_server, 8, tinyweb_on_connection);
 }
 
