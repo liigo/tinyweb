@@ -30,6 +30,9 @@ void tinyweb_start(uv_loop_t* loop, const char* ip, int port, const char* doc_ro
 	uv_tcp_init(_loop, &_server);
 	uv_tcp_bind(&_server, (const struct sockaddr*) &addr, 0);
 	uv_listen((uv_stream_t*)&_server, 8, tinyweb_on_connection);
+
+	puts("Tinyweb v3 is started, listening port 8080...");
+	puts("Please access http://localhost:8080 from you web browser.");
 }
 
 static void after_uv_close_client(uv_handle_t* client) {
@@ -180,7 +183,7 @@ static void tinyweb_on_request_get(uv_stream_t* client, const char* pathinfo, co
 
 	//request an action
 	if(strcmp(pathinfo, "/") == 0) {
-		char* respone = format_http_respone("200 OK", "text/html", "Welcome to tinyweb", -1, NULL);
+		char* respone = format_http_respone("200 OK", "text/html", "Welcome to tinyweb. <a href=\"index.html\">index.html</a>", -1, NULL);
 		write_uv_data(client, respone, -1, 0, 1);
 	} else if(strcmp(pathinfo, "/404") == 0) {
 		char* respone = format_http_respone("404 Not Found", "text/html", "<h3>404 Page Not Found<h3>", -1, NULL);
