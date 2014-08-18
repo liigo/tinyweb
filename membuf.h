@@ -53,7 +53,7 @@ MEMBUF_INLINE unsigned int membuf_append_uint(membuf_t* buf, unsigned int ui) {
 MEMBUF_INLINE unsigned int membuf_append_short(membuf_t* buf, short s) {
 	return membuf_append_data(buf, &s, sizeof(s));
 }
-MEMBUF_INLINE unsigned int membuf_append_ushort(membuf_t* buf, short us) {
+MEMBUF_INLINE unsigned int membuf_append_ushort(membuf_t* buf, unsigned short us) {
 	return membuf_append_data(buf, &us, sizeof(us));
 }
 MEMBUF_INLINE unsigned int membuf_append_float(membuf_t* buf, float f) {
