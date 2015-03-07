@@ -31,8 +31,8 @@ void tinyweb_start(uv_loop_t* loop, const char* ip, int port, const char* doc_ro
 	uv_tcp_bind(&_server, (const struct sockaddr*) &addr, 0);
 	uv_listen((uv_stream_t*)&_server, 8, tinyweb_on_connection);
 
-	puts("Tinyweb v3 is started, listening port 8080...");
-	puts("Please access http://localhost:8080 from you web browser.");
+	printf("Tinyweb v3 is started, listening port %d...\n", port);
+	printf("Please access http://localhost:%d from you web browser.\n", port);
 }
 
 static void after_uv_close_client(uv_handle_t* client) {
